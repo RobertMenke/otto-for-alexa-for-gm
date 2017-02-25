@@ -9,8 +9,9 @@ Check out this blog from treehouse if you don't already have these [Installing N
 
 ---
 
-To check if node is installed, open terminal and type `node -v`
-To check if npm is installed, open terminal and type `npm -v`
+> To check if node is installed, open terminal and type `node -v`
+
+> To check if npm is installed, open terminal and type `npm -v`
 
 # Steps to get the code running
 
