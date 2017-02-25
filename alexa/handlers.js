@@ -1,3 +1,5 @@
+const AlexaInput = require("./models/AlexaInput");
+
 /**
  * This file include a list of handlers for requests.
  *
@@ -6,13 +8,32 @@
  */
 module.exports = {
     'LaunchRequest' : function(){
-        this.emit(":tell", this.t("HELP_MESSAGE"));
+        this.emit("PERFORM_ACTION");
     },
     'Unhandled' : function() {
         this.emit(':ask', 'Hmm, I\'m good, but not that good.');
     },
-    'HelloWorldIntent': function () {
-        this.emit(':tell', 'Hello World!');
+    'PERFORM_ACTION' : function(){
+        //This should contain data on the request
+        const input = new AlexaInput(this.event.request);
+        input.post('/test', response => {
+            this.emit(":tell", "PERFORM_ACTION was called");
+        });
+
+    },
+    'LOCATE' : function(){
+        //This should contain data on the request
+        const input = new AlexaInput(this.event.request);
+        input.post('/test', response => {
+            this.emit(":tell", "PERFORM_ACTION was called");
+        });
+    },
+    'MAINTENANCE' : function(type){
+        //This should contain data on the request
+        const input = new AlexaInput(this.event.request);
+        input.post('/test', response => {
+            this.emit(":tell", "PERFORM_ACTION was called");
+        });
     },
     'AMAZON.HelpIntent': function () {
         const speechOutput = this.t("HELP_MESSAGE");

@@ -1,0 +1,13 @@
+{
+  "name":"ChevyHitters",
+  "id":"94575369",
+  "version": "0.0.0",
+  "src": "src",
+  "dist": "dist",
+  "main": "index.html",
+  "icon": "Icon.png",
+  "developer": "ChevyHitters",
+  "category": "General",
+  "type": "RemoteHigh",
+  "description": "Generated on 2/25/2017, 3:30:48 PM by ngi-sdk version "
+}

@@ -1,0 +1,25 @@
+{
+  "intents": [
+    {
+      "intent": "PERFORM_ACTION",
+      "slots" : [
+        {
+          "name": "REQUEST",
+          "type": "ACTION"
+        }
+      ]
+    },
+    {
+      "intent": "LOCATE"
+    },
+    {
+      "intent": "MAINTENANCE",
+      "slots" : [
+        {
+          "name": "MAINTENANCE_CHECK",
+          "type": "MAINTENANCE"
+        }
+      ]
+    }
+  ]
+}
