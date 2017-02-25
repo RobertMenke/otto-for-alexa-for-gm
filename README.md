@@ -7,7 +7,6 @@ Node and NPM
 
 Check out this blog from treehouse if you don't already have these [Installing Node and NPM](http://blog.teamtreehouse.com/install-node-js-npm-mac)
 
----
 
 > To check if node is installed, open terminal and type `node -v`
 
