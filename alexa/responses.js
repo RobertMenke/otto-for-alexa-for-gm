@@ -1,5 +1,2 @@
-module.exports = {
-    test : function() {
-        return "Hello world"
-    }
-};
+"use strict";
+const AlexaInput = require("./models/AlexaInput");

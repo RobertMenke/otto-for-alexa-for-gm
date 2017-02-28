@@ -1,3 +1,4 @@
+"use strict";
 
 class AlexaSlot {
 
@@ -11,12 +12,12 @@ class AlexaSlot {
         /**
          * @type {String}
          */
-        this.name   = object['name'];
+        this.name   = object ? object['name'] : "";
 
         /**
          * @type {*}
          */
-        this.value  = object['value']
+        this.value  = object ? object['value'] : "";
     }
 }
 

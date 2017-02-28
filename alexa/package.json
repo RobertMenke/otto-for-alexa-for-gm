@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "alexa-sdk": "^1.0.7"
+    "alexa-sdk": "^1.0.7",
+    "request": "^2.79.0"
   }
 }

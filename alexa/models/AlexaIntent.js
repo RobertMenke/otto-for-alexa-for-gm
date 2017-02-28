@@ -1,3 +1,5 @@
+"use strict";
+
 const AlexaSlot = require("./AlexaSlot");
 
 
@@ -54,7 +56,7 @@ class AlexaIntent {
     _getSlots() {
         if(this._hasSlots()){
             const slots = Object.keys(this.intent['slots']);
-            return slots.map(slot => new AlexaSlot(slot, this.intent['slot']));
+            return slots.map(slot => new AlexaSlot(slot, this.intent['slots']));
         }
 
         return [];

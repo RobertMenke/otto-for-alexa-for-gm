@@ -1,5 +1,8 @@
+"use strict";
+
 const AlexaIntent = require("./AlexaIntent");
 const http        = require("http");
+const req         = require("request");
 const querystring = require("querystring");
 
 
@@ -13,7 +16,7 @@ class AlexaInput {
      * @returns {string}
      */
     static get GM_HOST() {
-        return "192.168.0.2";
+        return "http://forte9293.ngrok.io";
     }
 
     /**
@@ -21,7 +24,7 @@ class AlexaInput {
      * @returns {string}
      */
     static get GM_PORT() {
-        return "3000";
+        return "4200";
     }
 
     constructor(request) {
@@ -43,9 +46,12 @@ class AlexaInput {
      * @param callback
      */
     post(path, callback) {
-        const request = this._createRequest(path, callback);
-        request.write(this._getPostData());
-        request.end();
+        const string = this._getPostData();
+        const url    = `${AlexaInput.GM_HOST}`;
+        // const url = "https://google.com";
+        req.get(`${url}${path}?${string}`)
+           .on('response', callback);
+
     }
 
     /**
@@ -119,7 +125,7 @@ class AlexaInput {
      * @private
      */
     _getPostData() {
-        return querystring.stringify({
+        return querystring.encode({
             "intent_name"   : this.intent ? this.intent.name : "",
             "slots"         : this.intent ? this.intent.serializeSlots() : []
         });
