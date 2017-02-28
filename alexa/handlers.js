@@ -1,3 +1,5 @@
+"use strict";
+
 const AlexaInput = require("./models/AlexaInput");
 
 /**
@@ -16,14 +18,27 @@ module.exports = {
     'PERFORM_ACTION' : function(){
         //This should contain data on the request
         const input = new AlexaInput(this.event.request);
+        // this.emit(":tell", "PERFORM_ACTION was called");
         input.post('/test', response => {
-            this.emit(":tell", "PERFORM_ACTION was called");
+            let raw_data = '';
+            response.on('data', (chunk) => raw_data += chunk);
+            response.on('end', () => {
+                try {
+                    let parsedData = JSON.parse(raw_data);
+                    this.emit(":tell", JSON.stringify(parsedData));
+
+                } catch (e) {
+
+                }
+            });
+
         });
 
     },
     'LOCATE' : function(){
         //This should contain data on the request
         const input = new AlexaInput(this.event.request);
+        this.emit(":tell", `${AlexaInput.GM_HOST}:${AlexaInput.GM_PORT}/test`);
         input.post('/test', response => {
             this.emit(":tell", "PERFORM_ACTION was called");
         });
