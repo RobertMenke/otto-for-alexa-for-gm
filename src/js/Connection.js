@@ -18,10 +18,7 @@ export default class Connection {
         this.socket = this._connect();
     }
 
-
     init() {
-        console.log("message sent");
-        this._emit("Hello from GM");
         this._onRequest();
     }
 
