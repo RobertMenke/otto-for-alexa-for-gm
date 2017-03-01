@@ -21,3 +21,10 @@
     top: 104px;
   }
 }
+
+/* Added by Chris */
+
+body {
+	color: #47525d;
+	font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
