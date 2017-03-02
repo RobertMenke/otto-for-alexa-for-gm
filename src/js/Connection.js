@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import SignalQuery from "./SignalQuery";
+import SignalResolver from "./SignalResolver";
 
 export default class Connection {
 
@@ -33,15 +33,17 @@ export default class Connection {
 
     _onRequest() {
         this.socket.on('request', data => {
-            SignalQuery.getSignals([
-                'tire_left_front_pressure',
-                'tire_left_rear_pressure',
-                'engine_oil_pressure',
-                'tire_right_front_pressure',
-                'tire_right_rear_pressure'
-            ], data => {
-                this._emit(JSON.stringify(data));
-            })
+
+            const resolver = new SignalResolver(data);
+            resolver.resolveIntent(json => {
+                if(!json.hasOwnProperty('error')){
+                    json = {
+                        success : json
+                    };
+                }
+
+                this._emit(JSON.stringify(json));
+            });
         });
 
         return this;
