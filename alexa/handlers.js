@@ -16,10 +16,14 @@ module.exports = {
         this.emit(':ask', 'Hmm, I\'m good, but not that good.');
     },
     'PERFORM_ACTION' : function(){
+
+
+    },
+    'FUEL_LEVEL' : function() {
         //This should contain data on the request
         const input = new AlexaInput(this.event.request);
         // this.emit(":tell", "PERFORM_ACTION was called");
-        input.post('/test', response => {
+        input.post('/otto-request', response => {
             let raw_data = '';
             response.on('data', (chunk) => raw_data += chunk);
             response.on('end', () => {
@@ -33,7 +37,6 @@ module.exports = {
             });
 
         });
-
     },
     'LOCATE' : function(){
         //This should contain data on the request

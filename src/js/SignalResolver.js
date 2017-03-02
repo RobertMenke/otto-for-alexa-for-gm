@@ -22,16 +22,33 @@ export default class SignalResolver {
         this.slots  = intent['slots']
     }
 
+    /**
+     * Resolve an intent from alexa
+     *
+     * @param callback
+     */
     resolveIntent(callback) {
 
         const map = SignalResolver.intent_signal_map;
+
         if(map.hasOwnProperty(this.intent)){
             SignalResolver.getSignals(map[this.intent], callback);
         }
+        else{
+            callback({
+                error : "I haven't been taught to do that yet. I'm just a young app."
+            });
+        }
+    }
 
-        callback({
-            error : "I haven't been taught to do that yet. I'm still a young app."
-        });
+
+    /**
+     *
+     * @returns {boolean}
+     * @private
+     */
+    _hasSlots() {
+        return Array.isArray(this.slots) && this.slots.length > 0;
     }
 }
 

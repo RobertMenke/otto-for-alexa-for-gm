@@ -36,19 +36,19 @@ export default class Connection {
 
             const resolver = new SignalResolver(data);
             resolver.resolveIntent(json => {
+
                 if(!json.hasOwnProperty('error')){
                     json = {
                         success : json
                     };
                 }
-
+                console.log("has response", json, this instanceof Connection);
                 this._emit(JSON.stringify(json));
             });
         });
 
         return this;
     }
-
 
     /**
      *
@@ -58,6 +58,7 @@ export default class Connection {
      * @private
      */
     _emit(message) {
+        console.log("emitting data", message, typeof this.socket.emit, this.socket);
         this.socket.emit("otto", message);
 
         return this;
