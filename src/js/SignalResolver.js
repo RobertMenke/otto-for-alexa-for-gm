@@ -10,6 +10,7 @@ export default class SignalResolver {
         }
     }
 
+
     constructor(intent) {
         /**
          * @type {String}
