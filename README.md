@@ -1,4 +1,4 @@
-# ChevyHitters
+# This Repo Is
 An Alexa app that interacts with GM vehicles
 
 # Requirements
@@ -16,7 +16,7 @@ Check out this blog from treehouse if you don't already have these [Installing N
 
 **Step 1**
 ```git
-git clone https://github.com/RobertMenke/ChevyHitters.git
+git clone https://github.com/RobertMenke/otto-for-alexa-for-gm.git
 ```
 
 **Step 2**
