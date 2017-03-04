@@ -1,5 +1,5 @@
 # This Repo Is
-An Alexa app that interacts with GM vehicles
+A Voice platform for GM vehicles using the Amazon Echo.
 
 # Requirements
 
