@@ -28,3 +28,13 @@ body {
 	color: #47525d;
 	font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
+
+.otto-logo {
+  position: absolute;
+  display : block;
+  left: 50%;
+  top: 55%;
+  transform:translate(-50%, -50%);
+  max-height: 300px;
+  max-width: 300px;
+}
