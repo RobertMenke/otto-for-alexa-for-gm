@@ -14,7 +14,12 @@ module.exports = {
             this.emit(":tell", text_response);
         });
     },
-    'LOCK_UNLOCK' : function() {
+    'ENGINE_OIL' : function() {
+        AlexaRequest.makeRequest(this.event.request, text_response => {
+            this.emit(":tell", text_response);
+        });
+    },
+    'NAV' : function(){
         AlexaRequest.makeRequest(this.event.request, text_response => {
             this.emit(":tell", text_response);
         });

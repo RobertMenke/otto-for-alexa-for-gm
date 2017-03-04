@@ -26,9 +26,9 @@ class AlexaResponse {
         switch(this.request.intent.name){
             case "FUEL_LEVEL" :
                 return this.getFuelLevel();
-            case "LOCK_UNLOCK":
-                return this.getLockedStatus();
-            case "LOCATION":
+            case "ENGINE_OIL":
+                return this.getOilStatus();
+            case "NAV":
                 return this.getLocationResponse();
             default:
                 return this.getDefaultResponse();
@@ -53,20 +53,28 @@ class AlexaResponse {
                 return "You're getting low, you have just over a quarter tank of gas left";
             }
             else if(level > 0){
-                return "Looks like it. Your fuel light will come on soon";
+                return "Looks like it. Your low fuel light will come on soon";
             }
             else {
-                return `Looks like it. Your fuel light is on and your alternative fuel level is at ${alt_level}%`;
+                return `Looks like it. Your low fuel light is on and your alternative fuel level is at ${alt_level}%`;
             }
         }
-        //We didn't get the correct data from gm
-        else {
-            return "Looks like it. Your fuel light will come on soon";
-        }
+
+        return "Looks like it. Your low fuel light will come on soon";
     }
 
-    getLockedStatus() {
-        return "Your car is locked. Sleep well.";
+    getOilStatus() {
+        if(typeof this.response === "object"){
+            const level = this.response['engine_oil_life'];
+            if(level > 50){
+                return "Wow. That's quite a drive, but your engine oil looks just fine!"
+            }
+            else {
+                return "Wow. That’s quite a drive. I suggest getting an oil change.";
+            }
+        }
+
+
     }
 
     /**
@@ -74,7 +82,7 @@ class AlexaResponse {
      * @returns {string}
      */
     getLocationResponse() {
-        return "Bla, bla location";
+        return "Your destination has been set. Safe travels!";
     }
 
     /**

@@ -147,7 +147,7 @@ class AlexaRequest {
     _getPostData() {
         return querystring.encode({
             "intent_name"   : this.intent ? this.intent.name : "",
-            "slots"         : this.intent ? this.intent.serializeSlots() : []
+            "slots"         : this.intent ? JSON.stringify(this.intent.serializeSlots()) : []
         });
     }
 

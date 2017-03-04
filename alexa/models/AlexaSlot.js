@@ -12,12 +12,12 @@ class AlexaSlot {
         /**
          * @type {String}
          */
-        this.name   = object ? object['name'] : "";
+        this.name   = object ? object[type]['name'] : "";
 
         /**
          * @type {*}
          */
-        this.value  = object ? object['value'] : "";
+        this.value  = object ? object[type]['value'] : "";
     }
 }
 

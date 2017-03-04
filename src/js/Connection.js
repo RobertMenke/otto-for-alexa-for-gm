@@ -9,7 +9,7 @@ export default class Connection {
          *
          * @type {string}
          */
-        this.host = "http://forte9293.ngrok.io";
+        this.host = "https://forte9293.ngrok.io";
 
         /**
          *
@@ -28,7 +28,7 @@ export default class Connection {
      * @private
      */
     _connect() {
-        return io.connect(this.host);
+        return io.connect(this.host, {query : `vehicle=gm&vin=${this.getVin()}`});
     }
 
     _onRequest() {
@@ -41,6 +41,16 @@ export default class Connection {
         });
 
         return this;
+    }
+
+    /**
+     * Get the VIN number for the vehicle
+     *
+     *
+     * @returns {String}
+     */
+    getVin() {
+        return gm.info.getVIN();
     }
 
 
