@@ -40,9 +40,8 @@ class AlexaIntent {
      * Determine if the intent has slots
      *
      * @returns {boolean}
-     * @private
      */
-    _hasSlots(){
+    hasSlots(){
         return this.intent.hasOwnProperty('slots');
     }
 
@@ -54,7 +53,7 @@ class AlexaIntent {
      * @private
      */
     _getSlots() {
-        if(this._hasSlots()){
+        if(this.hasSlots()){
             const slots = Object.keys(this.intent['slots']);
             return slots.map(slot => new AlexaSlot(slot, this.intent['slots']));
         }

@@ -9,7 +9,7 @@ export default class Connection {
          *
          * @type {string}
          */
-        this.host = "http://forte9293.ngrok.io";
+        this.host = "https://forte9293.ngrok.io";
 
         /**
          *
@@ -17,6 +17,7 @@ export default class Connection {
          */
         this.socket = this._connect();
     }
+
 
     init() {
         this._onRequest();
@@ -28,7 +29,7 @@ export default class Connection {
      * @private
      */
     _connect() {
-        return io.connect(this.host);
+        return io.connect(this.host, {query : `vehicle=gm&vin=${this.getVin()}`});
     }
 
     _onRequest() {
@@ -36,17 +37,21 @@ export default class Connection {
 
             const resolver = new SignalResolver(data);
             resolver.resolveIntent(json => {
-                if(!json.hasOwnProperty('error')){
-                    json = {
-                        success : json
-                    };
-                }
-
                 this._emit(JSON.stringify(json));
             });
         });
 
         return this;
+    }
+
+    /**
+     * Get the VIN number for the vehicle
+     *
+     *
+     * @returns {String}
+     */
+    getVin() {
+        return gm.info.getVIN();
     }
 
 
@@ -58,6 +63,7 @@ export default class Connection {
      * @private
      */
     _emit(message) {
+        console.log("emitting data", message, typeof this.socket.emit, this.socket);
         this.socket.emit("otto", message);
 
         return this;
